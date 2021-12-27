@@ -1,0 +1,75 @@
+cluster_endpoint = "https://F80B609977797A88B70C5CDB37B3F385.gr7.us-east-2.eks.amazonaws.com"
+cluster_id = "nxtdev-eks-mCMnz65A"
+cluster_name = "nxtdev-eks-mCMnz65A"
+cluster_security_group_id = "sg-03070cfc77e1b07db"
+config_map_aws_auth = [
+  {
+    "binary_data" = tomap(null) /* of string */
+    "data" = tomap({
+      "mapAccounts" = <<-EOT
+      []
+
+      EOT
+      "mapRoles" = <<-EOT
+      - "groups":
+        - "system:bootstrappers"
+        - "system:nodes"
+        "rolearn": "arn:aws:iam::395419915163:role/nxtdev-eks-mCMnz65A2021100602565206160000000c"
+        "username": "system:node:{{EC2PrivateDNSName}}"
+
+      EOT
+      "mapUsers" = <<-EOT
+      []
+
+      EOT
+    })
+    "id" = "kube-system/aws-auth"
+    "metadata" = tolist([
+      {
+        "annotations" = tomap(null) /* of string */
+        "generate_name" = ""
+        "generation" = 0
+        "labels" = tomap({
+          "app.kubernetes.io/managed-by" = "Terraform"
+          "terraform.io/module" = "terraform-aws-modules.eks.aws"
+        })
+        "name" = "aws-auth"
+        "namespace" = "kube-system"
+        "resource_version" = "628"
+        "uid" = "2c6b121a-3dac-4e9f-8989-297a435f115c"
+      },
+    ])
+  },
+]
+kubectl_config = <<EOT
+apiVersion: v1
+preferences: {}
+kind: Config
+
+clusters:
+- cluster:
+    server: https://F80B609977797A88B70C5CDB37B3F385.gr7.us-east-2.eks.amazonaws.com
+    certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUM1ekNDQWMrZ0F3SUJBZ0lCQURBTkJna3Foa2lHOXcwQkFRc0ZBREFWTVJNd0VRWURWUVFERXdwcmRXSmwKY201bGRHVnpNQjRYRFRJeE1UQXdOakF5TlRJME1Gb1hEVE14TVRBd05EQXlOVEkwTUZvd0ZURVRNQkVHQTFVRQpBeE1LYTNWaVpYSnVaWFJsY3pDQ0FTSXdEUVlKS29aSWh2Y05BUUVCQlFBRGdnRVBBRENDQVFvQ2dnRUJBT1ZkCm53OUNrOUJOeGplVFFkV1JiVFZyVXVnNjF4SVpTYmRnVzNuV2pNb0xDTWxKd2ZJZnFIY0RUbExEdUV5di9LZ3YKSFZvN1UvNDZkYlFndGp0VVFTcTJPU1l4ejN4NTJ6YXJiZDhEbnp3T3EvRXNyUSt2a3VVbXZTQXJjNk13Q2lTZQpZa0ZCcXl4ZEZlQ1NBaWlMNGZCSWVUKy9hNVA2TytNSDdjcThkRTFmcnB4TzNHaHdqanh6V0VmL0U1U2djRU1HCmlTenFldVEzdWpJMThkemdoT2RUVFhjWWk3MGphbkpCMDByV05penNucFpNNjloQWRxV3oxQmJDS3BocjA0UG4Kd0FOSnRTQXYrUWlQQTNvZnFtK21BZzgvY2xvTTZqbnN5YjJJdVJRQVV2UWc0aTFRelp4Nk45OEVDSjhxSmdKTQpHd25nb3RkVUZhNi9qY3ozRkEwQ0F3RUFBYU5DTUVBd0RnWURWUjBQQVFIL0JBUURBZ0trTUE4R0ExVWRFd0VCCi93UUZNQU1CQWY4d0hRWURWUjBPQkJZRUZPQlYxOXdjQnBUTUJIbEtSakRIT2FDamJORjFNQTBHQ1NxR1NJYjMKRFFFQkN3VUFBNElCQVFBdHN2NUtQOTFXdTRXRFA5b0ltbjRRQ1dWbS9sR2s5MGNCL1IvdWhmSys5VXFsa3E4cApVaG1Gb3BOaHYySDlvS2tXWDgySGZSNk96Tm51TzhFUTdRZEFJYVhxMnJNVjM1N0hkQ1dYT1pUR1FRZUNGMDZ5ClYwcXVtWWRSaGs4V2huTUlsUW1TcHp1eVRQbDI1cEJyaUlUTm1PWCtnQUYvNEJmVnNua2xuU1U4VExUSFFkWlUKSC9pcVdhTWVFaG1VZmNsSFhhekdPdnBKMWpZUEJrQnU0eW1GUC84aktaazE5VjFia2V0RzdHcHJzbHZLYWI3RApUQ3hlOHdDL1Q1eUJMNjZSYkhDeERQOE50RXo0R0IyMWg2dXBnbDIxVjNUaXJYOXpQeGhNZ21zNFdEcWNPUzBwCml0cEh0OWsvNXRveU44ZytvQ21uZFVhS21pSnFjQzY3MmVlZgotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+  name: eks_nxtdev-eks-mCMnz65A
+
+contexts:
+- context:
+    cluster: eks_nxtdev-eks-mCMnz65A
+    user: eks_nxtdev-eks-mCMnz65A
+  name: eks_nxtdev-eks-mCMnz65A
+
+current-context: eks_nxtdev-eks-mCMnz65A
+
+users:
+- name: eks_nxtdev-eks-mCMnz65A
+  user:
+    exec:
+      apiVersion: client.authentication.k8s.io/v1alpha1
+      command: aws-iam-authenticator
+      args:
+        - "token"
+        - "-i"
+        - "nxtdev-eks-mCMnz65A"
+
+EOT
+region = "us-east-2"
